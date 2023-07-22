@@ -11,14 +11,14 @@ export function ConnectProfiles() {
     useConnect()
  
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex flex-row items-center justify-center gap-2">
+    <div className="flex flex-col gap-0">
+      <div className="flex flex-row items-center justify-center gap-0">
       {connectors.map((connector) => (
         <button
           disabled={!connector.ready}
           key={connector.id}
           onClick={() => connect({ connector })}
-          className="hover:bg-gray-200 w-40 h-40"
+          className="hover:bg-gray-200 w-40 h-40 duration-500"
         >
           {connector.name}
           {!connector.ready && ' (unsupported)'}
@@ -27,10 +27,10 @@ export function ConnectProfiles() {
             ' (connecting)'}
         </button>
       ))}
-      <div className="flex items-center justify-center hover:bg-gray-200 w-40 h-40">
+      <div className="flex items-center justify-center bg-white hover:bg-gray-200 w-40 h-40 duration-500">
       <a
                 href={`/api/auth/signin`}
-                className="bg-blue-400 hover:bg-blue-800"
+                className=""
                 onClick={(e) => {
                   e.preventDefault()
                   signIn("worldcoin") // when worldcoin is the only provider
@@ -41,7 +41,7 @@ export function ConnectProfiles() {
               </a>
       </div>
       </div>
-      <div className="flex items-center text-xs justify-center">
+      <div className="flex items-center text-xs justify-center bg-transparent">
         {error && <div>{error.message}</div>}
       </div>
     </div>
