@@ -1,10 +1,14 @@
-"use-client";
+import Profile from "./Profile";
+import SearchBar from "./SearchBar";
 
-export default function Header() {
+const Header = () => {
   return (
-    <div className="w-full flex flex-row justify-between px-10">
+    <div className="w-full absolute top-0 flex flex-row justify-between px-10 py-10 border">
       <span className="text-3xl font-extrabold">TrustBoard</span>
-      <p>Profile</p>
+      <SearchBar />
+      <Profile />
     </div>
   );
-}
+};
+
+export default Header;
