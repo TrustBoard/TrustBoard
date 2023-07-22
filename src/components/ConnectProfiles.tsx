@@ -24,7 +24,7 @@ export function ConnectProfiles() {
         </button>
       ))}
       <div className="flex items-center justify-center hover:bg-gray-200 w-40 h-40">
-            WorldCoin Sign In
+          <a href="https://worldcoin-test-jqnmy6dxe-trustboard.vercel.app">World Coin</a>
       </div>
       </div>
       <div className="flex items-center text-xs justify-center">
