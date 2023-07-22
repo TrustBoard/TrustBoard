@@ -109,10 +109,10 @@ export default function Home() {
       )}
       {/* Render the Chat component if connected, initialized, and messages exist */}
       {isConnected && isOnNetwork && messages && (
-        <div className="flex flex-row border-x ml-6 h-full">
-          <ul className="flex flex-col mt-[133px] w-60 p-2 h-full">
+        <div className="flex flex-row">
+          <ul className="flex flex-col w-60 p-2">
             <li>
-              <button className=" flex px-16 py-4 border justify-center rounded hover:shadow-sm">Contact1</button>
+              <button className=" flex px-16 py-4 border justify-center rounded hover:shadow">Contact1</button>
             </li>
           </ul>
           <Chat

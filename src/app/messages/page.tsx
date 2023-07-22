@@ -1,10 +1,14 @@
 "use client"
 import React from "react";
 import Home from "@/components/Home";
+import WrapperModule from "@/components/WrapperModule";
+
 
 const Page = () => {
-  return <div className=" ml-[264px]">
-    <Home/>
+  return <div className=" ">
+    <WrapperModule>
+      <Home/>
+    </WrapperModule>
   </div>;
 };
 

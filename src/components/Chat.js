@@ -26,7 +26,7 @@ function Chat({ client, messageHistory, conversation }) {
     );
 
     return (
-        <ul className=" h-full pl-6 border mt-[130px] w-full pt-4">
+        <ul className=" h-full pl-6 border rounded w-full pt-4">
           {messages.map((message, index) => (
             <li
               key={message.id}
