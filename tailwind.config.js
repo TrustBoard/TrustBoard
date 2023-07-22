@@ -16,6 +16,7 @@ module.exports = {
         color1: "#737791", // gris pour les textes
         color2: "#5D5FEF", // bleu
         color3: "#FAFBFC", // gris tres leger
+        color4: "#FCFEF2", // cream
       },
     },
   },

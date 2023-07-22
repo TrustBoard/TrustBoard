@@ -25,7 +25,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="absolute top-32 left-0 px-10 py-10 border">
+    <div className="absolute top-32 bottom-0 left-0 px-10 py-10 bg-white">
       <nav className="flex flex-col justify-start items-start gap-4">
         {navBarElements.map((page) => (
           <Link
@@ -44,6 +44,7 @@ const NavBar = () => {
                   : `/icons/${page.value}_notActive.svg`
               }
               alt={page.label}
+              className="w-7 h-7"
             />
             {page.label}
           </Link>
