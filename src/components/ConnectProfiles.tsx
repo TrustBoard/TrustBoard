@@ -1,8 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useAccount, useConnect } from 'wagmi'
+import Link from "next/link"
+import { signIn, signOut, useSession } from "next-auth/react"
 
 export function ConnectProfiles() {
+  const { data: session, status } = useSession()
+  const loading = status === "loading"
   const { connect, connectors, error, isLoading, pendingConnector } =
     useConnect()
  
@@ -24,7 +28,17 @@ export function ConnectProfiles() {
         </button>
       ))}
       <div className="flex items-center justify-center hover:bg-gray-200 w-40 h-40">
-          <a href="https://worldcoin-test-jqnmy6dxe-trustboard.vercel.app">World Coin</a>
+      <a
+                href={`/api/auth/signin`}
+                className="bg-blue-400 hover:bg-blue-800"
+                onClick={(e) => {
+                  e.preventDefault()
+                  signIn("worldcoin") // when worldcoin is the only provider
+                  // signIn() // when there are multiple providers
+                }}
+              >
+                World Coin
+              </a>
       </div>
       </div>
       <div className="flex items-center text-xs justify-center">
