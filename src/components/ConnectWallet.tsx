@@ -63,6 +63,10 @@ export function Profile() {
     useConnect();
   const { disconnect } = useDisconnect();
 
+  console.log(process.env.PROJECT_ID_WC);
+  console.log(process.env.WLD_CLIENT_SECRET);
+  console.log(process.env.WLD_CLIENT_ID);
+
   if (isConnected) {
     return (
       <div>
