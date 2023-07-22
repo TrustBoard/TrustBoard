@@ -1,6 +1,6 @@
-import NextAuth from "next-auth"
+import NextAuth, { NextAuthOptions } from "next-auth"
 
-const handler = NextAuth({
+export const authOptions: NextAuthOptions = {
     providers: [
         {
           id: "worldcoin",
@@ -8,8 +8,8 @@ const handler = NextAuth({
           type: "oauth",
           wellKnown: "https://id.worldcoin.org/.well-known/openid-configuration",
           authorization: { params: { scope: "openid" } },
-          clientId: "app_7dca9e2c6731d37b5c0d1e6f51cc4d01",
-          clientSecret: "sk_550dcc1653347ff4519114a06eba7c7ae0947906e71f4fdf",
+          clientId: process.env.WLD_CLIENT_ID,
+          clientSecret: process.env.WLD_CLIENT_SECRET,
           idToken: true,
           profile(profile) {
             return {
@@ -20,6 +20,6 @@ const handler = NextAuth({
           },
         },
       ],
-})
+}
 
-export { handler as GET, handler as POST }
+export default NextAuth(authOptions)
