@@ -105,7 +105,7 @@ const ConnectWallet = () => {
         <div className="w-full h-screen absolute top-0 left-0 bg-black/60 flex justify-center items-center z-50">
           <button
             onClick={() => setOpenWallet(false)}
-            className="absolute top-10 right-10 rounded-xl px-6 py-3 w-40 font-medium hover:bg-opacity-70 duration-200 bg-color3"
+            className="absolute top-10 right-10 rounded-xl text-lg px-6 py-3 w-40 font-medium hover:bg-opacity-70 duration-200 bg-color3"
           >
             Close
           </button>
@@ -122,6 +122,14 @@ const ConnectWallet = () => {
           {isConnected ? null : (<div className="w-4 h-4 absolute -top-1 bg-color2 -right-1 rounded-full"/>)}
           {isConnected ? null : (<div className="w-4 h-4 absolute -top-1 bg-color2 -right-1 rounded-full animate-ping"/>)}
         </button>
+      )}
+      {openWallet ? (
+        <button 
+        className="bg-transparent relative text-white rounded-xl px-6 py-3 text-lg font-medium w-40 duration-200"
+        >
+      </button>
+      ) : (
+        null
       )}
       
     </div>
