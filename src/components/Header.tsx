@@ -1,4 +1,4 @@
-import ConnectMetamask from "./ConnectMetamask";
+import ConnectMetamask from "./ConnectMetamaskBase";
 import ConnectWallet from "./ConnectWallet";
 import Profile from "./Profile";
 import SearchBar from "./SearchBar";
