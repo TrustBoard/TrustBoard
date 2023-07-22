@@ -17,7 +17,6 @@ const NavBar = () => {
   const pathname = usePathname();
 
   const buttonIsActive = (path: string) => {
-    console.log("path", path, "pathname", pathname);
     if (pathname === "/" && path === "/dashboard") {
       return true;
     }
@@ -30,8 +29,9 @@ const NavBar = () => {
         {navBarElements.map((page) => (
           <Link
             href={page.value === "dashboard" ? "/" : `/${page.value}`}
+            key={page.value}
             className={classNames(
-              "grid grid-flow-col w-full gap-4 items-center justify-start rounded-xl px-5 py-3 text-lg",
+              "grid grid-flow-col w-full gap-4 items-center justify-start rounded-xl px-6 py-3 text-lg",
               buttonIsActive(`/${page.value}`)
                 ? "text-white bg-color2 font-medium"
                 : "text-color1 hover:bg-slate-100 duration-200"
