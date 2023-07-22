@@ -67,7 +67,7 @@ export function Profile() {
     return (
       <div>
         <div>Connected to {connector?.name || 'Unknown Connector'}</div>
-        <button onClick={disconnect}>Disconnect</button>
+        <button onClick={() => disconnect()}>Disconnect</button>
       </div>
     );
   }
