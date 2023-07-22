@@ -1,22 +1,52 @@
 "use client";
-import { WagmiConfig, createConfig, configureChains, mainnet } from 'wagmi'
-import { publicProvider } from 'wagmi/providers/public'
- 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet],
-  [publicProvider()],
-)
+import {
+  WagmiConfig,
+  createClient,
+  configureChains,
+  mainnet,
+  goerli,
+} from "wagmi";
+import { MetaMaskConnector } from "@wagmi/core/connectors/metaMask";
+import { WalletConnectConnector } from "@wagmi/core/connectors/walletConnect";
+import { publicProvider } from "wagmi/providers/public";
 
-const config = createConfig({
+const { chains, provider } = configureChains([goerli], [publicProvider()]);
+
+// const { connectors } = getDefaultWallet({
+//   appName: "TrustBoard",
+//   chains,
+// });
+
+const config = createClient({
   autoConnect: true,
-  publicClient,
-  webSocketPublicClient,
-})
+  connectors: [
+    new MetaMaskConnector({ chains }),
+    /*new CoinbaseWalletConnector({
+      chains,
+      options: {
+        appName: 'wagmi',
+      },
+    }),*/
+    new WalletConnectConnector({
+      chains,
+      options: {
+        projectId: "...",
+      },
+    }),
+    /*
+    new InjectedConnector({
+      chains,
+      options: {
+        name: 'Injected',
+        shimDisconnect: true,
+      },
+    }),*/
+  ],
+  provider,
+});
 
 export default function Home() {
   return (
-    <WagmiConfig config={config}>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
-    </WagmiConfig>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
   );
 }
