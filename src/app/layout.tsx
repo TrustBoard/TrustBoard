@@ -44,10 +44,10 @@ const config = createClient({
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "TrustBoard",
-  description: "Decentralized Corporate Board",
-};
+// export const metadata: Metadata = {
+//   title: "TrustBoard",
+//   description: "Decentralized Corporate Board",
+// };
 
 export default function RootLayout({
   children,
