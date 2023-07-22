@@ -1,10 +1,8 @@
+"use client";
+
 import React, { useState } from "react";
-import {
-  Client,
-  DaoDepositSteps,
-  DepositParams,
-  TokenType,
-} from "@aragon/sdk-client";
+import { Client, DaoDepositSteps, DepositEthParams } from "@aragon/sdk-client";
+import { TokenType } from "@aragon/sdk-client-common";
 
 import { ETHToWei } from "../utils/crypto";
 import { useAragonSDKContext } from "../context/AragonSDK";
@@ -18,7 +16,7 @@ export default function DepositETH(): JSX.Element {
   async function depositEthToDao() {
     const client = new Client(context);
 
-    const depositParams: DepositParams = {
+    const depositParams: DepositEthParams = {
       type: TokenType.NATIVE,
       amount: BigInt(ETHToWei(amountOfETH)),
       daoAddressOrEns: "0x23Dc80dAFA1db5bb8C41e12719963BCC50460cDD",
@@ -48,7 +46,7 @@ export default function DepositETH(): JSX.Element {
 
   return (
     <div className="mx-auto row g-3" style={{ width: "800px" }}>
-      <h3 className="pt-4 text-center">Deposit ETH into BSA DAO</h3>
+      <h3 className="pt-4 text-center">Deposit ETH into ParksDAO</h3>
 
       <input
         type="number"
