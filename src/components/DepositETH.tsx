@@ -46,7 +46,7 @@ export default function DepositETH(): JSX.Element {
 
   return (
     <div className="mx-auto row g-3" style={{ width: "800px" }}>
-      <h3 className="pt-4 text-center">Deposit ETH into ParksDAO</h3>
+      <h3 className="pt-4 text-center">Deposit ETH into BSA DAO</h3>
 
       <input
         type="number"
