@@ -30,6 +30,7 @@ const config = createClient({
       chains,
       options: {
         //projectId: process.env.PROJECT_ID_WC,
+        
       },
     }),
     /*
