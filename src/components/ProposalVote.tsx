@@ -1,23 +1,19 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   TokenVotingClient,
   VoteProposalParams,
   VoteProposalStep,
   VoteValues,
 } from "@aragon/sdk-client";
+import { votes } from "../utils/crypto";
 
 import { useAragonSDKContext } from "../context/AragonSDK";
 import classNames from "classnames";
+import WrapperModule from "@/components/WrapperModule";
 
-const votes = [
-  { label: "Yes", value: VoteValues.YES },
-  { label: "No", value: VoteValues.NO },
-  { label: "Abstain", value: VoteValues.ABSTAIN },
-];
-
-export default function VoteProposal() {
+export default function VoteProposal({ setIsSuccess }: any) {
   const { context } = useAragonSDKContext();
   const [vote, setVote] = useState({ label: "", value: VoteValues.YES });
 
@@ -36,8 +32,10 @@ export default function VoteProposal() {
           switch (step.key) {
             case VoteProposalStep.VOTING:
               console.log({ txHash: step.txHash });
+              setIsSuccess(true);
               break;
             case VoteProposalStep.DONE:
+              setIsSuccess(true);
               break;
           }
         } catch (err) {
@@ -51,28 +49,34 @@ export default function VoteProposal() {
 
   return (
     <div className="flex flex-col gap-7 items-center">
-      <h2 className="text-3xl font-semibold w-full text-left">Vote</h2>
-      <div className=" flex flex-row justify-center gap-7 w-full">
-        {votes.map((v) => (
+      <WrapperModule notMargin={true}>
+        <h2 className="text-3xl font-semibold w-full text-left">Vote</h2>
+        <div className=" flex flex-row justify-center gap-7 w-full">
+          {votes.map((v) => (
+            <button
+              className={classNames(
+                "px-6 py-3 rounded-xl",
+                vote.value === v.value
+                  ? " border border-color2 bg-color2 text-white"
+                  : "border border-color2 bg-white text-black"
+              )}
+              onClick={() => setVote(v)}
+            >
+              {v.label}
+            </button>
+          ))}
+        </div>
+      </WrapperModule>
+      <WrapperModule notMargin={true}>
+        <div className="flex flex-row justify-center items-center">
           <button
-            className={classNames(
-              "px-5 py-2 rounded-xl",
-              vote.value === v.value
-                ? " border border-blue-500 bg-blue-500 text-white"
-                : "border border-blue-500 bg-white text-black"
-            )}
-            onClick={() => setVote(v)}
+            onClick={confirmVote}
+            className="border border-color2 bg-color2 text-white text-lg font-medium px-8 py-3 rounded-xl hover:opacity-80 duration-200 "
           >
-            {v.label}
+            Confirm Vote
           </button>
-        ))}
-      </div>
-      <button
-        onClick={confirmVote}
-        className="border border-blue-500 bg-blue-500 text-white text-lg font-medium px-5 py-2 rounded-xl flex flex-row gap-2"
-      >
-        <span>Confirm</span>
-      </button>
+        </div>
+      </WrapperModule>
     </div>
   );
 }

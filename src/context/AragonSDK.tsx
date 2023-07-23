@@ -1,31 +1,29 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-
 import { useSigner } from "wagmi";
 import { Context, ContextParams } from "@aragon/sdk-client";
+import { SupportedNetwork } from "@aragon/sdk-client-common";
 
 const AragonSDKContext = createContext({});
 
-function AragonSDKWrapper({ children }: any): JSX.Element {
+export const daoENS: string = "bsaepfl.dao.eth";
+
+export default function AragonSDKWrapper({ children }: any): JSX.Element {
   const [context, setContext] = useState<Context | undefined>(undefined);
   const signer = useSigner().data || undefined;
 
   useEffect(() => {
     const aragonSDKContextParams: ContextParams = {
-      network: "goerli",
+      network: SupportedNetwork.GOERLI,
       signer,
-      daoFactoryAddress: "0x16B6c6674fEf5d29C9a49EA68A19944f5a8471D3",
       web3Providers: ["https://rpc.ankr.com/eth_goerli"],
       ipfsNodes: [
         {
-          url: "https://testing-ipfs-0.aragon.network/api/v0",
-          headers: { "X-API-KEY": process.env.NEXT_IPFS_KEY || "" },
-        },
-      ],
-      graphqlNodes: [
-        {
-          url: `https://subgraph.satsuma-prod.com/${process.env.NEXT_SUBGRAPH_KEY}/aragon/osx-goerli/version/v1.0.0/api`,
+          url: "https://test.ipfs.aragon.network/api/v0",
+          headers: {
+            "X-API-KEY": "b477RhECf8s8sdM7XrkLBs2wHc4kCMwpbcFC55Kt",
+          },
         },
       ],
     };
@@ -43,5 +41,3 @@ function AragonSDKWrapper({ children }: any): JSX.Element {
 export function useAragonSDKContext(): any {
   return useContext(AragonSDKContext);
 }
-
-export default AragonSDKWrapper;
