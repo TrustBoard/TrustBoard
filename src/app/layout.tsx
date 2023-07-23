@@ -51,23 +51,29 @@ const inter = Inter({ subsets: ["latin"] });
 //   description: "Decentralized Corporate Board",
 // };
 
-
-
-export default function RootLayout() {
+export default function RootLayout({
+  children, session
+}: {
+  children: React.ReactNode;
+  session: any;
+}) {
+// {
+//   Component,
+//   pageProps: { session, ...pageProps },
+// }: AppProps<{ session: Session }>) {
   return (
     <html lang="en">
       <body className={inter.className}>
-     
+        <SessionProvider session={session}>
           <WagmiConfig client={config}>
             <AragonSDKWrapper>
               <Header />
               <NavBar />
-                
+              {children}
             </AragonSDKWrapper>
           </WagmiConfig>
-
+        </SessionProvider>
       </body>
     </html>
   );
 }
-
