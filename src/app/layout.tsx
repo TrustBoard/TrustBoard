@@ -6,7 +6,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import NavBar from "@/components/NavBar";
 import AragonSDKWrapper from "@/context/AragonSDK";
-
+import { SessionProvider } from "next-auth/react"
+import type { AppProps } from "next/app"
+import type { Session } from "next-auth"
 import { WagmiConfig, createClient, configureChains, goerli } from "wagmi";
 import { MetaMaskConnector } from "@wagmi/core/connectors/metaMask";
 import { WalletConnectConnector } from "@wagmi/core/connectors/walletConnect";
@@ -27,7 +29,7 @@ const config = createClient({
     new WalletConnectConnector({
       chains,
       options: {
-        projectId: "...",
+        //projectId: process.env.PROJECT_ID_WC,
       },
     }),
     /*
@@ -49,22 +51,23 @@ const inter = Inter({ subsets: ["latin"] });
 //   description: "Decentralized Corporate Board",
 // };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+
+
+export default function RootLayout() {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <WagmiConfig client={config}>
-          <AragonSDKWrapper>
-            <Header />
-            <NavBar />
-            {children}
-          </AragonSDKWrapper>
-        </WagmiConfig>
+     
+          <WagmiConfig client={config}>
+            <AragonSDKWrapper>
+              <Header />
+              <NavBar />
+                
+            </AragonSDKWrapper>
+          </WagmiConfig>
+
       </body>
     </html>
   );
 }
+

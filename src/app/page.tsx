@@ -9,6 +9,7 @@ import {
 import { MetaMaskConnector } from "@wagmi/core/connectors/metaMask";
 import { WalletConnectConnector } from "@wagmi/core/connectors/walletConnect";
 import { publicProvider } from "wagmi/providers/public";
+import type { ReactNode } from "react"
 
 const { chains, provider } = configureChains([goerli], [publicProvider()]);
 
@@ -30,7 +31,7 @@ const config = createClient({
     new WalletConnectConnector({
       chains,
       options: {
-        projectId: "...",
+        //projectId: process.env.PROJECT_ID_WC,
       },
     }),
     /*
@@ -45,8 +46,18 @@ const config = createClient({
   provider,
 });
 
+function Layout({ children }: { children: ReactNode }) {
+  return (
+    <>
+        <main>{children}</main>
+    </>
+  )
+}
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
+    <Layout>
+      <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
+    </Layout>
   );
 }
