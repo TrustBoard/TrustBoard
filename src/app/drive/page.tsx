@@ -5,9 +5,9 @@ import { useState } from "react";
 import WrapperModule from "@/components/WrapperModule";
 
 const Page = () => {
-
+  
   const rows = [];
-  const [fileName, setFileName] = useState();
+  const [fileName, setFileName] = useState("");
   const [file, setFile] = useState();
 
   const hiddenFileInput = React.useRef(null);
@@ -24,10 +24,12 @@ const Page = () => {
   return <div className="flex flex-row  w-full ">
     <WrapperModule>
       <div className="flex flex-row gap-4 justify-center items-center w-full">
-        <File fileName='File 1'/>
-        <File fileName='File 2'/>
-        <File fileName='File 3'/>
-        <File fileName='File 4'/>
+        <File fileName='Recap week 1'/>
+        <File fileName='BSA Meeting'/>
+        <File fileName='ETHCC Lausanne'/>
+        <File fileName='EPFL Ranking'/>
+        {fileName == "" ? <p></p> : <File fileName = {fileName}/>}
+        
         
       </div>
       

@@ -4,7 +4,6 @@ import React, { useEffect, useState, useRef } from "react";
 import Chat from "./Chat";
 import styles from "./Home.module.css";
 
-const PEER_ADDRESS = "0x937C0d4a6294cdfa575de17382c7076b579DC176";
 
 export default function Home() {
 
@@ -16,6 +15,10 @@ export default function Home() {
   const [signer, setSigner] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const [isOnNetwork, setIsOnNetwork] = useState(false);
+  const [peerAdress, setPeerAdress] = useState("0x937C0d4a6294cdfa575de17382c7076b579DC176");
+  const PEER_ADDRESS = peerAdress;
+
+
 
   // Function to load the existing messages in a conversation
   const newConversation = async function (xmtp_client, addressTo) {
@@ -46,6 +49,18 @@ export default function Home() {
     clientRef.current = xmtp;
   };
 
+
+  const handleClick1 = () => {
+    setPeerAdress('0x937C0d4a6294cdfa575de17382c7076b579DC176')
+    console.log(PEER_ADDRESS)
+  }
+
+  const handleClick2 = () => {
+    setPeerAdress('0x937C0d4a6294cdfa575de17382c7076b578DC111')
+    console.log(peerAdress)
+
+  }
+
   // Function to connect to the wallet
   const connectWallet = async function () {
     // Check if the ethereum object exists on the window object
@@ -62,6 +77,8 @@ export default function Home() {
 
         // Update the isConnected data property based on whether we have a signer
         setIsConnected(true);
+
+        await initXmtp();
       } catch (error) {
         console.error("User rejected request", error);
       }
@@ -98,7 +115,6 @@ export default function Home() {
           </button>
         </div>
       )}
-      {/* Display XMTP connection options if connected but not initialized */}
       {isConnected && !isOnNetwork && (
         <div className={styles.xmtp}>
           {signer?.address}
@@ -110,9 +126,12 @@ export default function Home() {
       {/* Render the Chat component if connected, initialized, and messages exist */}
       {isConnected && isOnNetwork && messages && (
         <div className="flex flex-row">
-          <ul className="flex flex-col w-60 p-2">
+          <ul className="flex flex-col w-60 p-2 gap-2">
             <li>
-              <button className=" flex px-16 py-4 border justify-center rounded hover:shadow">Contact1</button>
+              <button className=" flex px-16 py-4 border justify-center rounded hover:shadow" onClick={handleClick1}>Contact1</button>
+            </li>
+            <li>
+              <button className=" flex px-16 py-4 border justify-center rounded hover:shadow" onClick={handleClick2}>Contact2</button>
             </li>
           </ul>
           <Chat
