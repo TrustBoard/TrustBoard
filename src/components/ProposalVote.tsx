@@ -12,6 +12,7 @@ import { votes } from "../utils/crypto";
 import { useAragonSDKContext } from "../context/AragonSDK";
 import classNames from "classnames";
 import WrapperModule from "@/components/WrapperModule";
+import { sendBroadcastNotification } from "../app/api/PushControl/broadcastNotificationService";
 
 export default function VoteProposal({ setIsSuccess }: any) {
   const { context } = useAragonSDKContext();
@@ -35,6 +36,10 @@ export default function VoteProposal({ setIsSuccess }: any) {
               setIsSuccess(true);
               break;
             case VoteProposalStep.DONE:
+              await sendBroadcastNotification(
+                "Vote alert :",
+                "A new vote has been submited"
+              );
               setIsSuccess(true);
               break;
           }
