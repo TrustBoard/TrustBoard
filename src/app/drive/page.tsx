@@ -23,7 +23,7 @@ const Page = () => {
 
   return <div className="flex flex-row  w-full ">
     <WrapperModule>
-      <div className="flex flex-row gap-4 justify-center items-center w-full">
+      <div className="grid grid-cols-4 gap-4 justify-center items-center w-full">
         <File fileName='Recap week 1'/>
         <File fileName='BSA Meeting'/>
         <File fileName='ETHCC Lausanne'/>

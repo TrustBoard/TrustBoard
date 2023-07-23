@@ -62,7 +62,7 @@ export default function Home() {
         <div className="flex flex-row gap-4 justify-center items-center w-full">
           <File fileName="Recap week 1" />
           <File fileName="BSA Meeting" />
-          <File fileName="ETHCC Lausanne" />
+          <File fileName="ETHcc Lausanne" />
           <File fileName="EPFL Ranking" />
         </div>
       </WrapperModule>

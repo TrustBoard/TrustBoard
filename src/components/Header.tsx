@@ -9,6 +9,11 @@ const Header = () => {
       <Image src={"/trustboard.svg"} alt="" width="200" height="120"/>
       {/*<span className="text-3xl font-extrabold">TrustBoard</span>*/}
       <SearchBar />
+      <div className="flex flex-row items-center h-8 bg-gray-100 gap-2 px-4 bg-opacity-50 py-6 rounded-md">
+        <Image src={"/flag_us.svg"} alt="" width="20" height="20"/>
+        <span>Eng (US)</span>
+        <Image src={"/chevron.svg"} alt="" width="20" height="20"/>
+      </div>
       {/* <Profile /> */}
       {/* <ConnectMetamask /> */}
       <ConnectWallet />
