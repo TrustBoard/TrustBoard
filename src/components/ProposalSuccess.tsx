@@ -11,7 +11,7 @@ import {
   VoteValues,
 } from "@aragon/sdk-client";
 import { divider } from "@/utils/crypto";
-
+import { RxReload } from "react-icons/rx";
 import { daoENS, useAragonSDKContext } from "../context/AragonSDK";
 
 const ProposalSuccess = () => {
@@ -53,9 +53,17 @@ const ProposalSuccess = () => {
         1
       </div>
       <WrapperModule>
-        <h2 className="text-3xl font-semibold w-full text-left py-5 pl-5">
-          Voting
-        </h2>
+        <div className="flex flex-row gap-2 items-center">
+          <h2 className="text-3xl font-semibold text-left py-5 pl-5 ">
+            Voting
+          </h2>
+          <button
+            onClick={fetchDao}
+            className="cursor-pointer pointer-events-auto"
+          >
+            <RxReload className="w-6 h-6 text-color1" />
+          </button>
+        </div>
         <div className="flex flex-col gap-10 mt-5">
           {votes.map((vote, index) => (
             <div className="flex flex-col gap-2">

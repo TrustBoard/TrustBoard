@@ -46,7 +46,7 @@ const ProposalMembers = ({ dropDown }: boolean) => {
     <div className="absolute right-10 top-0 flex flex-col justify-end gap-3 w-full max-w-[20%] pointer-events-none">
       <WrapperModule _width="max-w-[100%]">
         <div className="flex flex-row justify-between">
-          <h2 className="text-3xl font-semibold inline-block">
+          <h2 className="text-2xl font-semibold inline-block">
             {members.length} Members
           </h2>
           <HiUserGroup className="w-7 h-7 text-color1" />
